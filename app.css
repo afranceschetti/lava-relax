@@ -1,0 +1,47 @@
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,300);
+body{color: #9D9D9D; background-color: #000; margin:0;padding:0; overflow: hidden; font-family: Quicksand;}
+
+a{color:#9D9D9D	; text-decoration: none;}
+a:hover{color: #fff;}
+
+input{margin-right: 1em; border-radius: 4px;}
+#toolbar {
+    width: 100%;
+    font-weight: 400;
+    height: auto;
+    padding: 20px 0px;
+    font-size: 18px;
+    line-height: 24px;
+    background: #222;
+    top: 0;
+    position: fixed;
+    color: #9D9D9D;
+    text-align: center;
+    clear: both;
+    overflow: hidden;
+}
+
+.logo-panel{
+	padding: 0 20px;
+	float: left;
+}
+
+.logo-panel h1{padding: 0; margin: 0; font-size: 24px; font-weight: 700; color: #fff;}
+
+.choose-color-panel{
+	padding: 0 40px 0 20px;
+	float: right;
+}
+
+.credits-panel{
+	padding: 0 20px 0 40px;
+	border-left: 1px solid white;
+	float: right;
+}
+.credits-panel .credits-link{
+	color: #d80073;
+}
+
+.credits-panel a:hover{
+	color: #E257A0;
+}
