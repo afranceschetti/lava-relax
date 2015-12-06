@@ -1,10 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,300);
+
 body{color: #9D9D9D; background-color: #000; margin:0;padding:0; overflow: hidden; font-family: Quicksand;}
 
 a{color:#9D9D9D	; text-decoration: none;}
 a:hover{color: #fff;}
 
 input{margin-right: 1em; border-radius: 4px;}
+
 #toolbar {
     width: 100%;
     font-weight: 400;
@@ -21,27 +23,32 @@ input{margin-right: 1em; border-radius: 4px;}
     overflow: hidden;
 }
 
-.logo-panel{
-	padding: 0 20px;
-	float: left;
-}
-
+.logo-panel{padding: 0 20px;float: left;}
 .logo-panel h1{padding: 0; margin: 0; font-size: 24px; font-weight: 700; color: #fff;}
 
-.choose-color-panel{
-	padding: 0 40px 0 20px;
-	float: right;
+.choose-color-panel{padding: 0 40px 0 20px;float: right;}
+
+.credits-toolbar-panel{	padding: 0 20px 0 40px;	border-left: 1px solid white;float: right;}
+.credits-toolbar-panel .credits-link{color: #d80073;}
+.credits-toolbar-panel a:hover{	color: #E257A0;}
+
+#credits-panel{
+	position:fixed;
+    top: 50%;
+    left: 50%;
+    width:30em;
+    height:12em;
+    margin-top: -6em; 
+    margin-left: -15em;
+    border: 1px solid #E257A0;
+    background-color: #222;
+    padding: 1em;
 }
 
-.credits-panel{
-	padding: 0 20px 0 40px;
-	border-left: 1px solid white;
-	float: right;
-}
-.credits-panel .credits-link{
-	color: #d80073;
-}
+#credits-panel a{color: #1ba1e2;}
 
-.credits-panel a:hover{
-	color: #E257A0;
-}
+#close_credits_link{text-align: right; margin-bottom:3em;	font-size: 2em;}
+#close_credits_link a{color: #9D9D9D;}
+#close_credits_link a:hover{color: #fff;}
+
+

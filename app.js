@@ -7,8 +7,6 @@ var winW ,winH,cnvH,cnvW;
 
 var goo = [255, 255, 40];
 var goo1 = [255, 255, 40];
-var liq = [0, 80, 50];
-var liq1 = [0, 80, 50];
 var scale = 1;
 
 var cylW = 440 * scale,
@@ -23,47 +21,29 @@ var gooctx = goocanvas.getContext("2d");
 $(document).ready(function() {
     init();
     setcanvassize();
-    go();
+    createblobs();
+    doAnimation();
+
+    //go();
 });
 
 var init = function() {
     cnv = document.getElementById("lavacanvas");
     ctx = cnv.getContext("2d");
-    winW = $(window).width();
-    winH = $(window).height();
-    console.log("win h",winH);
-	cnvH = winH;
-    cnvW = winW;
-	cylW = winW * scale,
-    cylH = winH * scale;
-	cylR = cylW / 2;
-	cylX = (winW) / 2; // xpos of centre
-	cylY = (winH - cylH) / 2; // ypos of base
-
     
-    
-    cnvW = Math.ceil(cylW);
-    cnvH = Math.ceil(cylH);
-    cnv.width = cnvW;
-    cnv.height = cnvH;
-
-	goocanvas.width = cylW;
-	goocanvas.height = cylH;
-	$("#lavacolor").on("change",function(){
-		changeLavaColor($("#lavacolor").val());
-	});
-	
-	$("#randomlavacolor").on("click", function(){randomcolours();});
-
 	setTimeout(function() {$('#toolbar').fadeOut('fast');}, 5000); 
 	
-	$( "#lavacanvas" ).mousemove(function( event ) {	
+	$("#lavacolor").on("change",function(){
+		changeLavaColor($("#lavacolor").val());
+	});	
+	$("#randomlavacolor").on("click", function(){randomcolours();});
+	$( "#lavacanvas" ).click(function( event ) {	
  		$('#toolbar').fadeIn('fast');
  		setTimeout(function() {$('#toolbar').fadeOut('fast');}, 30000); 
-
 	});
-	
-	$("#close_toolbar_link").on("click", function(){$('#toolbar').fadeOut('fast');});
+	$("#close_toolbar_link").on("click", function(){$('#toolbar').fadeOut();});
+	$("#open_credits_link").on("click", function(){$('#credits-panel').fadeIn();});
+	$("#close_credits_link").on("click", function(){$('#credits-panel').fadeOut();});
 
 };
 
@@ -98,37 +78,25 @@ window.cancelRequestAnimFrame = (function() {
 */
 
 var setcanvassize = function() {
-	/*
-    var ow = winW,
-        oh = winH;
-    if (document.body && document.body.offsetWidth) {
-        winW = document.body.offsetWidth;
-        winH = document.body.offsetHeight;
-    }
-    if (document.compatMode == 'CSS1Compat' &&
-        document.documentElement &&
-        document.documentElement.offsetWidth) {
-        winW = document.documentElement.offsetWidth;
-        winH = document.documentElement.offsetHeight;
-    }
-    if (window.innerWidth && window.innerHeight) {
-        winW = window.innerWidth;
-        winH = window.innerHeight;
-    }
-    winW -= 25;
-    winH -= 50;
-    cnvW = Math.ceil(cylW + 20);
-    cnvH = Math.ceil(cylH + capH + baseH + 20);
+	winW = $(window).width();
+    winH = $(window).height();
+	cnvH = winH;
+    cnvW = winW;
+	cylW = winW * scale,
+    cylH = winH * scale;
+	cylR = cylW / 2;
+	cylX = (winW) / 2; // xpos of centre
+	cylY = (winH - cylH) / 2; // ypos of base
+
+    cnvW = Math.ceil(cylW);
+    cnvH = Math.ceil(cylH);
     cnv.width = cnvW;
     cnv.height = cnvH;
-    ctx.clearRect(0, 0, winW, winH);
-    cylX = (cnvW) / 2; // xpos of centre
-    cylY = (cnvH - cylH + 20) / 2; // ypos of base
 
-    cnv.style.left = ((winW - cnvW) >> 1) + "px";
-    cnv.style.top = ((winH - cnvH + 60) >> 1) + "px";
-	*/
-    drawblobs();
+	goocanvas.width = cylW;
+	goocanvas.height = cylH;
+
+	drawblobs();
 };
 
 var randomcolours = function() {
@@ -163,7 +131,6 @@ var goocircle = function(x, y, r, ctx) {
     ctx.fill();
 };
 
-
 var clear = function() {
     ctx.clearRect(0, 0, ctx.width, ctx.height);
     gooctx.clearRect(0, 0, cylW, cylH);
@@ -174,7 +141,6 @@ var fps = function() {
         frametime[i] = frametime[i - 1];
     frametime[0] = (new Date()).getTime();
 };
-
 
 var blobs = [];
 
@@ -252,11 +218,6 @@ var moveblobs = function() {
     var nd = Math.ceil(tscale);
     for (var i = 0; i < nd; i++) {
         for (j = 0; j < 3; j++) {
-            if (liq1[j] > liq[j]) liq[j] += 1;
-            if (liq1[j] < liq[j]) liq[j] -= 1;
-        }
-
-        for (j = 0; j < 3; j++) {
             if (goo1[j] > goo[j]) goo[j] += 1;
             if (goo1[j] < goo[j]) goo[j] -= 5;
         }
@@ -332,14 +293,6 @@ var afrequest = null;
 var doAnimation = function() {
     moveblobs();
     afrequest = requestAnimFrame(doAnimation);
-};
-
-var go = function(){
-    window.onresize = setcanvassize;
-    //setcanvassize();
-    createblobs();
-    doAnimation();
-
 };
 
 window.onresize = setcanvassize;
