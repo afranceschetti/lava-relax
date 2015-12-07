@@ -11,7 +11,7 @@ input{margin-right: 1em; border-radius: 4px;}
     width: 100%;
     font-weight: 400;
     height: auto;
-    padding: 20px 0px;
+    padding: 10px 0px;
     font-size: 18px;
     line-height: 24px;
     background: #222;
@@ -24,6 +24,7 @@ input{margin-right: 1em; border-radius: 4px;}
 }
 
 .logo-panel{padding: 0 20px;float: left;}
+.logo-panel img{height: 24px; width: auto;}
 .logo-panel h1{padding: 0; margin: 0; font-size: 24px; font-weight: 700; color: #fff;}
 
 .choose-color-panel{padding: 0 40px 0 20px;float: right;}
@@ -37,7 +38,7 @@ input{margin-right: 1em; border-radius: 4px;}
     top: 50%;
     left: 50%;
     width:30em;
-    height:12em;
+    height:13em;
     margin-top: -6em; 
     margin-left: -15em;
     border: 1px solid #E257A0;
@@ -46,8 +47,10 @@ input{margin-right: 1em; border-radius: 4px;}
 }
 
 #credits-panel a{color: #1ba1e2;}
-
-#close_credits_link{text-align: right; margin-bottom:3em;	font-size: 2em;}
+#credits-panel .credits-logo{margin-bottom:1em;}
+#credits-panel .credits-logo img{height:3em; width: auto;}
+#credits-panel .credits-logo span{font-size:1.5em; }
+#close_credits_link{text-align: right; 	font-size: 2em; width: 4em; position: absolute; top:.2em; right: .5em;}
 #close_credits_link a{color: #9D9D9D;}
 #close_credits_link a:hover{color: #fff;}
 
