@@ -4,7 +4,7 @@ Relax with lava lamp
 
 (Javascript, canvas exercise)
 
-**Start relaxing [here](http://afranceschetti.github.io/quik/)** 
+**Start relaxing [here](http://afranceschetti.github.io/lava-relax/)** 
 
 <p><small><i>* best used with good music</i></small></p>
 
