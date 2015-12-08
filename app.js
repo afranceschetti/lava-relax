@@ -1,23 +1,44 @@
+//dichiaro tutte le variabili ed alcune sono standard
+
+//short version of Canvas
 var cnv;
+//Context
 var ctx;
 var active = true;
+//questa non mi e' chiara
 var frametime = [];
+//come sopra
 var nframetimes = 10;
+//Window and Canvas height/width
 var winW ,winH,cnvH,cnvW;
 
+//The goo object provides access to most of the Goo Engine API. 
+//For example, one can create entities and access math functions.
+//http://goocreate.com/learn/the-goo-object/
+//non ne ero a conoscenza
 var goo = [255, 255, 40];
 var goo1 = [255, 255, 40];
 var scale = 1;
 
+
 var cylW = 440 * scale,
     cylH = 660 * scale;
+    
+//cylR equivale q Cycle Right?
 var cylR = cylW / 2;
 var cylX = (winW) / 2; // xpos of centre
 var cylY = (winH - cylH) / 2; // ypos of base
+
+//qui creiamo un elemeno che poi andremo ad aggiungere al DOM
 var goocanvas = document.createElement("canvas");
-var gooctx = goocanvas.getContext("2d");
 
+//The HTMLCanvasElement.getContext() 
+//this method returns a drawing context on the canvas, 
+//or null if the context identifier is not supported.
+//non usando mai i Canvas non ne ero a conoscenza
+var gooctx = goocanvas.getContext("2d"); //https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext
 
+//lanciamo  queste variabili a caricamento pagina avvenuto
 $(document).ready(function() {
     init();
     setcanvassize();
@@ -28,14 +49,30 @@ $(document).ready(function() {
 });
 
 var init = function() {
+	//il canvas e' un elemnto vuoto creato in cima all' HTML
+	//che viene riempito successivamente
+	//<canvas id='lavacanvas' ></canvas>
     cnv = document.getElementById("lavacanvas");
+    //questo, come detto sopra, devo approfondirlo
     ctx = cnv.getContext("2d");
     
-	setTimeout(function() {$('#toolbar').fadeOut('fast');}, 5000); 
+	//facciamo sparire la toolbar dopo 5 secondi
+	setTimeout( function() {
+			$('#toolbar').fadeOut('fast');
+		}, 5000 
+	); //l'ho riscritta solo per vedere se rende meglio indentantata, ma mi pare peggio di prima!
+	//setTimeout(function() {$('#toolbar').fadeOut('fast');}, 5000); 
 	
+	//da dove arriva "change" ? pare logico visto il nome, ma non ricordo di averlo mai usato!
+	//http://stackoverflow.com/questions/13418963/jquery-onchange-function-not-triggering-for-dynamically-created-inputs
 	$("#lavacolor").on("change",function(){
+		//.val devo rivederlo, facendo solo js adesso sono un po' fuori da jQuery
+		//http://api.jquery.com/val/
 		changeLavaColor($("#lavacolor").val());
-	});	
+	});
+	
+	//FINITO PRIMA PARTE DI COMMENTI 07/12/2015
+	
 	$("#randomlavacolor").on("click", function(){randomcolours();});
 	$( "#lavacanvas" ).click(function( event ) {	
  		$('#toolbar').fadeIn('fast');
