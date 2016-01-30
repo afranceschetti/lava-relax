@@ -24,12 +24,12 @@ var scale = 1;
 var cylW = 440 * scale,
     cylH = 660 * scale;
     
-//cylR equivale q Cycle Right?
+//cylR equivale a Cycle Right?
 var cylR = cylW / 2;
 var cylX = (winW) / 2; // xpos of centre
 var cylY = (winH - cylH) / 2; // ypos of base
 
-//qui creiamo un elemeno che poi andremo ad aggiungere al DOM
+//qui creiamo un elemento che poi andremo ad aggiungere al DOM
 var goocanvas = document.createElement("canvas");
 
 //The HTMLCanvasElement.getContext() 
